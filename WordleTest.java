@@ -3,55 +3,63 @@ import java.util.*;
 public class WordleTest {
 	
 	public static void main(String[] args) throws Exception{
-		
+	
+	//Creates file to be used later in the reader.
 	File file = new File("C:\\Users\\hsstudent\\Documents\\wordleAnswers.txt");
+	
+	//List of strings to hold all letters that are not in the word.
 	ArrayList<String> totNullLetters = new ArrayList<String>();
+	
+	//Exit case for main while loop.
 	Boolean wordNotFound = true;
-	
-	while(wordNotFound) 
-	{
-		ArrayList<String> wordList = new ArrayList<String>();
-		System.out.println("Pick a word and type it into 'Wordle.'\r\n");
 		
-		Scanner nullCheck = new Scanner(System.in);
-		System.out.println("Accepting letters that aren't in the word of the day... (separate each letter with a space, ex: A E I O U)");
-		String nullLetters = nullCheck.nextLine().toLowerCase();
-		String[] currNullLetters = nullLetters.split(" ");
-		
-		for(int i = 0; i < currNullLetters.length; i++)
+		//Main while loop.
+		while(wordNotFound) 
 		{
+			//Creates list of words to be temporarily used and changed depending on the data that the user gives the program.
+			ArrayList<String> wordList = new ArrayList<String>();
+			System.out.println("Pick a word and type it into 'Wordle.'\r\n");
+		
+			//Scanner to see what letters are NOT included in the word
+			Scanner nullCheck = new Scanner(System.in);
+			System.out.println("Accepting letters that aren't in the word of the day... (separate each letter with a space, ex: A E I O U)");
+			String nullLetters = nullCheck.nextLine().toLowerCase();
+			String[] currNullLetters = nullLetters.split(" ");
+		
+			for(int i = 0; i < currNullLetters.length; i++)
+			{
 			totNullLetters.add(currNullLetters[i]);
-		}
+			}
 		
-		System.out.println("\r\nThe letter(s) " + nullLetters + " have been removed from the word list.\r\n");
+			System.out.println("\r\nThe letter(s) " + nullLetters + " have been removed from the word list.\r\n");
 		
-		
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line = reader.readLine();
-		while(line!=null)
-		{
-			Boolean goodWord = true;
-			for (int i = 0; i < totNullLetters.size(); i++) 
+			//Reader reads through the entire word list and removes words that have null letters.
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line = reader.readLine();
+			while(line!=null)
 			{
-				if (line.contains(totNullLetters.get(i))) 
+				Boolean goodWord = true;
+				for (int i = 0; i < totNullLetters.size(); i++) 
 				{
-					goodWord = false;
+					if (line.contains(totNullLetters.get(i))) 
+					{
+						goodWord = false;
+					}
 				}
-			}
-			if (goodWord) 
-			{
+				if (goodWord) 
+				{
 				wordList.add(line);
+				}
+				line = reader.readLine();
 			}
-			line = reader.readLine();
+			reader.close();
+			
+			//Prints out 5 words for the user to choose from for the next iteration.
+			for(int i = 0; i < 5; i++)
+			{
+				System.out.println(wordList.get(i));
+			}
+			System.out.print("\r\n");
 		}
-		reader.close();
-		
-		for(int i = 0; i < 5; i++)
-		{
-			System.out.println(wordList.get(i));
-		}
-		System.out.print("\r\n");
-	}
-	}
-	
+	}	
 }
