@@ -124,7 +124,7 @@ public class WordleTest {
 				//Adds words that pass all tests to the wordList.
 				if (goodWord) 
 				{
-					wordList.add(line);
+				wordList.add(line);
 				}
 				line = reader.readLine();
 			}
