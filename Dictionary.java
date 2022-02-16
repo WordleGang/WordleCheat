@@ -62,24 +62,21 @@ public class Dictionary {
         }
 
         //Yellow letters.
-				if (goodWord)
+	if (goodWord){
+		for (int i = 0; i < totYellowLetters.size(); i++){
+			String[] yellowTest = totYellowLetters.get(i);
+			for (int k = 0; k < yellowTest.length; k++){
+				if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k]))
 				{
-					for (int i = 0; i < totYellowLetters.size(); i++)
-					{
-						String[] yellowTest = totYellowLetters.get(i);
-						for (int k = 0; k < yellowTest.length; k++)
-						{
-							if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k]))
-							{
-								goodWord = false;
-							}
-							if (!line.contains(yellowTest[k]) & !yellowTest[k].equals("_"))
-							{
-								goodWord = false;
-							}
-						}
-					}
+					goodWord = false;
 				}
+				if (!line.contains(yellowTest[k]) & !yellowTest[k].equals("_"))
+				{
+					goodWord = false;
+				}
+			}
+		}
+	}
 
         // Green letters.
         if (greenFound & goodWord) {
