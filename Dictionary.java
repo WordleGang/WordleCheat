@@ -61,17 +61,25 @@ public class Dictionary {
           }
         }
 
-        // Yellow letters.
-        if (goodWord) {
-          for (int i = 0; i < totYellowLetters.size(); i++) {
-            String[] yellowTest = totYellowLetters.get(i);
-            for (int k = 0; k < yellowTest.length; k++) {
-              if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k])) {
-                goodWord = false;
-              }
-            }
-          }
-        }
+        //Yellow letters.
+				if (goodWord)
+				{
+					for (int i = 0; i < totYellowLetters.size(); i++)
+					{
+						String[] yellowTest = totYellowLetters.get(i);
+						for (int k = 0; k < yellowTest.length; k++)
+						{
+							if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k]))
+							{
+								if (!line.contains(yellowTest[k]))
+								{
+									goodWord = false;
+								}
+								goodWord = false;
+							}
+						}
+					}
+				}
 
         // Green letters.
         if (greenFound & goodWord) {
