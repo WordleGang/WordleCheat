@@ -71,10 +71,10 @@ public class Dictionary {
 						{
 							if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k]))
 							{
-								if (!line.contains(yellowTest[k]))
-								{
-									goodWord = false;
-								}
+								goodWord = false;
+							}
+							if (!line.contains(yellowTest[k]) & !yellowTest[k].equals("_"))
+							{
 								goodWord = false;
 							}
 						}
