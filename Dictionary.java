@@ -20,26 +20,18 @@ public class Dictionary{
 	//Boolean to let the program know whether or not a green letter has been found.
 	private Boolean greenFound = false;
 
-	//Method to be used by the Main class after receiving input from the user regarding null letters.
-	public void confirmNull(String nullLetters)
+	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
+	public void confirmLetters(String nullLetters, String yellowLetters, String greenLetters)
 	{
 		String[] currNullLetters = nullLetters.split("");
 		for (int i = 0; i < currNullLetters.length; i++)
 		{
 			totNullLetters.add(currNullLetters[i]);
 		}
-	}
-
-	//Method to be used by the Main class after receiving input from the user regarding yellow letters.
-	public void confirmYellow(String yellowLetters)
-	{
+	
 		String[] currYellowLetters = yellowLetters.split("");
 		totYellowLetters.add(currYellowLetters);
-	}
 
-	//Method to be used by the Main class after receiving input from the user regarding green letters.
-	public void confirmGreen(String greenLetters)
-	{
 		String[] currGreenLetters = greenLetters.split("");			
 		for (int i = 0; i < currGreenLetters.length; i++)
 		{
