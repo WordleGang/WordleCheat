@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Dictionary{
 	//Wordle answers file to be used in the BufferedReader later on.
-	private File answers = new File("DIRECTORY HERE//wordleAnswers.txt");
+	private File answers = new File("WordleCheat/wordleAnswers.txt");
 
 	//ArrayList of strings to hold all letters that have been found to not be a part of the word.
 	private ArrayList<String> totNullLetters = new ArrayList<String>();
