@@ -15,7 +15,7 @@ public class Dictionary{
 	private ArrayList<String[]> totYellowLetters = new ArrayList<String[]>();
 
 	//ArrayList of strings that holds all the words that the target word could be.
-	private ArrayList<String> wordList = new ArrayList<String>();
+	public ArrayList<String> wordList = new ArrayList<String>();
 
 	//Boolean to let the program know whether or not a green letter has been found.
 	private Boolean greenFound = false;
