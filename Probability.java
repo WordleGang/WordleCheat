@@ -16,9 +16,11 @@ public class Probability extends Dictionary {
   // Probability of each letter occuring in the entire list
   double[] probability = { 0.085, 0.024, 0.041, 0.033, 0.116, 0.019, 0.025, 0.033, 0.057, 0.002, 0.018, 0.062,
       0.027,
-      0.049, 0.065, 0.032, 0.003, 0.077, 0.057, 0.062, 0.040, 0.013, 0.017, 0.003, 0.037, 0.003 };
+      0.049, 0.065, 0.032, 0.003, 0.077, 0.057, 0.062, 0.040, 0.013, 0.017, 0.003, 0.037, 0.003, 0.034 };
 
   ArrayList<Double> holdingList = new ArrayList<Double>();
+
+  public double roundedAddedProbability;
 
   /**
    * Probability Class finds the total probabiliy of a letter occuring in a word
@@ -42,31 +44,55 @@ public class Probability extends Dictionary {
     return num;
   }
 
+  public ArrayList<Double> makeList(String[] wordList) {
+
+    ArrayList<Double> probabilityList = new ArrayList<Double>();
+    for (int i = 0; i < wordList.length; i++) {
+      probabilityList.add(getProbability(wordList[i]));
+    }
+
+    Collections.sort(probabilityList);
+
+    return probabilityList;
+  }
+
   /**
    * Would find the probabiliy of the word entered
    * 
    * @param input
    */
-  public void getProbability(String input) {
+  public double getProbability(String input) {
 
     System.out.println("Called");
 
     char[] charArray = input.toCharArray();
-    System.out.println(charArray);
+    // System.out.println(charArray);
     // ArrayList<String> stringList = new
     // ArrayList<String>(Arrays.asList(stringArray));
 
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < 26; j++) {
+    for (int i = 0; i < 4; i++) {
+      for (int j = 0; j < letters.length; j++) {
         if (charArray[i] == letters[j]) {
           addedProbability += probability[j];
         }
       }
-      // addedProbability += probability[i];
-      System.out.println(addedProbability);
+
+      // System.out.println(addedProbability);
     }
 
-    System.out.println(addedProbability);
+    // for (int i = 0; i < 4; i++) {
+
+    // for (int e : letters) {
+    // if (e == charArray[i]) {
+    // addedProbability += probability[e];
+    // System.out.println(addedProbability);
+    // }
+    // }
+    // }
+
+    roundedAddedProbability = roundDecimal(addedProbability, 4);
+    System.out.println(roundedAddedProbability);
+    return roundedAddedProbability;
   }
 
   // roundedAddedProbability = roundDecimal(addedProbability, 4);

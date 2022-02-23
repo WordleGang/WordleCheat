@@ -19,6 +19,7 @@ public class Main {
     prob.getProbability("EEEEE");
     prob.getProbability("ROUND");
     prob.getProbability("YYYY");
+    prob.getProbability("ZZZZZ");
 
   }
 }
