@@ -3,7 +3,7 @@ import java.util.stream.DoubleStream;
 import java.util.*;
 import java.lang.Math;
 
-public class Probability extends Dictionary {
+public class Probability {
 
   // List of all letters used for comparasion
   char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
@@ -43,16 +43,43 @@ public class Probability extends Dictionary {
     return num;
   }
 
-  public ArrayList<Double> makeList(String[] wordList) {
+  public Map<String, Double> makeList(String[] wordList) {
 
-    ArrayList<Double> probabilityList = new ArrayList<Double>();
+    // ArrayList<Double> probabilityList = new ArrayList<Double>();
+    HashMap<String, Double> totalArr = new HashMap<>();
+    String word;
+    double wordProbability;
     for (int i = 0; i < wordList.length; i++) {
-      probabilityList.add(getProbability(wordList[i]));
+      word = wordList[i];
+      wordProbability = getProbability(wordList[i]);
+      totalArr.put(word, wordProbability);
     }
 
-    Collections.sort(probabilityList);
+    Map<String, Double> sortedMap = hashMapSorter(totalArr);
+    // Collections.sort(probabilityList);
 
-    return probabilityList;
+    // return probabilityList;
+
+    return sortedMap;
+  }
+
+  public HashMap<String, Double> hashMapSorter(HashMap<String, Double> hm) {
+    List<Map.Entry<String, Double>> list = new LinkedList<Map.Entry<String, Double>>(hm.entrySet());
+
+    // Sort the list
+    Collections.sort(list, new Comparator<Map.Entry<String, Double>>() {
+      public int compare(Map.Entry<String, Double> o1,
+          Map.Entry<String, Double> o2) {
+        return (o1.getValue()).compareTo(o2.getValue());
+      }
+    });
+
+    // put data from sorted list to hashmap
+    HashMap<String, Double> temp = new LinkedHashMap<String, Double>();
+    for (Map.Entry<String, Double> aa : list) {
+      temp.put(aa.getKey(), aa.getValue());
+    }
+    return temp;
   }
 
   /**

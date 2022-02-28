@@ -11,6 +11,8 @@ public class Main {
 
     // Probability p = new Probability();
 
+    String[] arr = { "AAAAA", "EEEEE", "JJJJJ" };
+
     // System.out.println("Input: " + input);
 
     // System.out.println("dog");
@@ -20,6 +22,7 @@ public class Main {
     prob.getProbability("ROUND");
     prob.getProbability("YYYYY");
     prob.getProbability("ZZZZZ");
+    System.out.println(prob.makeList(arr));
 
   }
 }
