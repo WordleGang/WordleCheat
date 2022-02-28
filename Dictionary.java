@@ -28,13 +28,16 @@ public class Dictionary{
 	private Boolean greenFound = false;
 
 	//Constructor for Dictionary class.
-	public Dictionary(File f, String nl, String gl, String yl, ArrayList<String> wl){
+	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl){
   	this.answers = f;
+	this.nullLetters = nl;
+	this.yellowLetters = yl;
+	this.greenLetters = gl;
 	this.wordList = wl;
   	}
 	
 	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
-	public void confirmLetters(String nullLetters, String yellowLetters, String greenLetters)
+	public void confirmLetters()
 	{
 		String[] currNullLetters = nullLetters.split("");
 		for (int i = 0; i < currNullLetters.length; i++)
