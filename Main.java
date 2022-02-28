@@ -13,12 +13,12 @@ public class Main {
 
     // System.out.println("Input: " + input);
 
-    System.out.println("dog");
+    // System.out.println("dog");
     Probability prob = new Probability();
     prob.getProbability("AAAAA");
     prob.getProbability("EEEEE");
     prob.getProbability("ROUND");
-    prob.getProbability("YYYY");
+    prob.getProbability("YYYYY");
     prob.getProbability("ZZZZZ");
 
   }

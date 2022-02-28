@@ -7,8 +7,7 @@ public class Probability extends Dictionary {
 
   // List of all letters used for comparasion
   char[] letters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-      'T',
-      'U', 'V', 'W', 'S', 'X', 'Y', 'Z' };
+      'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
   // The total probability of the word
   double addedProbability;
@@ -63,14 +62,16 @@ public class Probability extends Dictionary {
    */
   public double getProbability(String input) {
 
-    System.out.println("Called");
+    // System.out.println("Called");
+    addedProbability = 0;
 
     char[] charArray = input.toCharArray();
     // System.out.println(charArray);
     // ArrayList<String> stringList = new
     // ArrayList<String>(Arrays.asList(stringArray));
 
-    for (int i = 0; i < 4; i++) {
+    int letterIndex = 0;
+    for (int i = 0; i < 5; i++) {
       for (int j = 0; j < letters.length; j++) {
         if (charArray[i] == letters[j]) {
           addedProbability += probability[j];
