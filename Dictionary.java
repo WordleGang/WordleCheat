@@ -2,25 +2,35 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary {
+  
   // Wordle answers file to be used in the BufferedReader later on.
-  private File answers = new File("/WordleCheat/wordleAnswers.txt");
+  private File answers;
 
   // ArrayList of strings to hold all letters that have been found to not be a
   // part of the word.
-  private ArrayList<String> totNullLetters = new ArrayList<String>();
+  private ArrayList<String> totNullLetters;
 
   // Array to hold all green letters that have been found in order.
-  private String[] totGreenLetters = new String[] { "", "", "", "", "" };
-
+  private String[] totGreenLetters;
+	
   // ArrayList of arrays of strings to hold all instances of letters that are in
   // the word but in the wrong place.
-  private ArrayList<String[]> totYellowLetters = new ArrayList<String[]>();
+  private ArrayList<String[]> totYellowLetters;
 
   // ArrayList of strings that holds all the words that the target word could be.
-  public ArrayList<String> wordList = new ArrayList<String>();
+  public ArrayList<String> wordList;
 
   // Boolean to let the program know whether or not a green letter has been found.
   private Boolean greenFound = false;
+  
+  //Constructor for the dictionary class.
+  public Dictionary(File f, ArrayList<String> nl, String[] gl, ArrayList<String[]> yl, ArrayList<String> wl){
+  	this.answers = f;
+	this.totNullLetters = nl;
+	this.totGreenLetters = gl;
+	this.totYellowLetters = yl;
+	this.wordList = wl;
+  }
 
   // Method to be used by the Main class after receiving input from the user
   // regarding the different types of letters.
@@ -36,7 +46,7 @@ public class Dictionary {
     String[] currGreenLetters = greenLetters.split("");
     for (int i = 0; i < currGreenLetters.length; i++) {
       if (!currGreenLetters[i].equals("_") & !currGreenLetters[i].equals(null) & !currGreenLetters[i].equals("")) {
-        greenFound = true;
+        this.greenFound = true;
         totGreenLetters[i] = currGreenLetters[i];
       }
     }
