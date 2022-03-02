@@ -12,7 +12,7 @@ public class Main {
 		
 		Boolean wordFound = false;
 		
-		Dictionary dict = new Dictionary(null, null, null, null, null);
+		Dictionary dict = new Dictionary(null, null, null, null, null, null);
 	
 		//Main while loop.
 		while(!wordFound) 
@@ -47,8 +47,9 @@ public class Main {
 				ArrayList<String> runningNull = dict.totNullLetters;
 				String[] runningGreen = dict.totGreenLetters;
 				ArrayList<String[]> runningYellow = dict.totYellowLetters;
+				Boolean greenFound = dict.greenFound;
 				
-				dict = new Dictionary(file, nullLetters, yellowLetters, greenLetters, wordList);
+				dict = new Dictionary(file, nullLetters, yellowLetters, greenLetters, wordList, greenFound);
 				dict.confirmLetters(runningNull, runningGreen, runningYellow);
 				wordList = dict.makeWordList();
 				
