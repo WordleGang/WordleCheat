@@ -64,7 +64,7 @@ public class Dictionary{
 	}
 
 	//Method to be used after confirming all information with the user. Goes through the previously established answers File variable and removes words that do not fit the criteria.
-	public ArrayList<String> makeWordList()
+	public ArrayList<String> makeWordList(ArrayList<String> gl)
 	{
 		ArrayList<String> tempWordList = new ArrayList<String>();
 		try {
@@ -72,7 +72,16 @@ public class Dictionary{
 			String line = reader.readLine();
 			while(line!=null)
 			{
-				Boolean goodWord = true;				
+				Boolean goodWord = true;
+				
+				for (String guess : gl)
+				{
+					if (line.equals(guess))
+					{
+						goodWord = false;
+					}
+				}
+				
 				String[] lineLetters = line.split("");
 				
 				//Null letters.
