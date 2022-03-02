@@ -43,15 +43,15 @@ public class Probability {
     return num;
   }
 
-  public Map<String, Double> makeList(String[] wordList) {
+  public Map<String, Double> makeList(ArrayList<String> wordList) {
 
     // ArrayList<Double> probabilityList = new ArrayList<Double>();
     HashMap<String, Double> totalArr = new HashMap<>();
     String word;
     double wordProbability;
-    for (int i = 0; i < wordList.length; i++) {
-      word = wordList[i];
-      wordProbability = getProbability(wordList[i]);
+    for (int i = 0; i < wordList.size(); i++) {
+      word = wordList.get(i);
+      wordProbability = getProbability(wordList.get(i));
       totalArr.put(word, wordProbability);
     }
 

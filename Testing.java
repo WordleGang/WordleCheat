@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Testing {
@@ -13,20 +17,28 @@ public class Testing {
       0.027,
       0.049, 0.065, 0.032, 0.003, 0.077, 0.057, 0.062, 0.040, 0.013, 0.017, 0.003, 0.037, 0.003 };
 
-  public static void main(String args[]) {
-    testing('I');
-
-  }
-
-  public static double testing(char input) {
-    // char[] stringArray = input.toCharArray();
-    for (char i : lettersT) {
-      if (input == lettersT[i]) {
-        addedProbability += probabilityT[i];
-      }
+  public static void main(String args[]) throws FileNotFoundException {
+    Scanner s = new Scanner(new File("wordleAnswers.txt"));
+    ArrayList<String> list = new ArrayList<String>();
+    while (s.hasNext()) {
+      list.add(s.next());
     }
+    s.close();
 
-    System.out.println(addedProbability);
-    return addedProbability;
+    ArrayList<String> singleList = new ArrayList<String>();
+
+    System.out.print(list.get(1));
   }
+
+  // public static double testing(char input) {
+  // // char[] stringArray = input.toCharArray();
+  // // for (char i : lettersT) {
+  // // if (input == lettersT[i]) {
+  // // addedProbability += probabilityT[i];
+  // // }
+  // // }
+
+  // // System.out.println(addedProbability);
+  // // return addedProbability;
+  // }
 }
