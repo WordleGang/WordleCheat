@@ -13,14 +13,20 @@ public class Main {
 		Boolean wordFound = false;
 		
 		Dictionary dict = new Dictionary(null, null, null, null, null, null);
+		
+		ArrayList<String> guessList = new ArrayList<String>();
 	
 		//Main while loop.
 		while(!wordFound) 
 		{
-				Scanner letterCheck = new Scanner(System.in);
+				Scanner guessCheck = new Scanner(System.in);
+				
+				System.out.println("Type in the word that you guessed.");
+				guessList.add(guessCheck.nextLine().toLowerCase());
+				
 				//Scanner to see what letters ARE NOT included in the word.
-				System.out.println("Accepting letters that aren't in the word of the day... (ex: aeiou)");
-				String nullLetters = letterCheck.nextLine().toLowerCase();
+				System.out.println("Accepting letters that aren't in the word of the day... (ex: aeiou, do NOT put duplicate letters in, even if they appear grey)");
+				String nullLetters = guessCheck.nextLine().toLowerCase();
 				if (!nullLetters.equals(""))
 				{
 					System.out.println(" ");
@@ -30,7 +36,7 @@ public class Main {
 				
 				//Scanner to see if there are any yellow letters and what positions they are in.
 				System.out.println("Accepting yellow letters in the format that README.txt specifies... (if the word you entered was 'raise' and the yellows were r, s, and e, you would type it as r__se.)");
-				String yellowLetters = letterCheck.nextLine().toLowerCase();
+				String yellowLetters = guessCheck.nextLine().toLowerCase();
 				if (!yellowLetters.equals(""))
 				{
 					System.out.println(" ");
@@ -38,7 +44,7 @@ public class Main {
 				
 				//Scanner to see if there are any green letters and what positions they are in.
 				System.out.println("Accepting green letters in the format that README.txt specifies... (if the word you entered was 'table' and the greens were t, e, and l, you would type it as t__le.)");
-				String greenLetters = letterCheck.nextLine().toLowerCase();
+				String greenLetters = guessCheck.nextLine().toLowerCase();
 				if (!greenLetters.equals(""))
 				{
 					System.out.println(" ");
@@ -51,7 +57,7 @@ public class Main {
 
 				dict = new Dictionary(file, nullLetters, yellowLetters, greenLetters, wordList, greenFound);
 				dict.confirmLetters(runningNull, runningGreen, runningYellow);
-				wordList = dict.makeWordList();
+				wordList = dict.makeWordList(guessList);
 				
 				System.out.println("-----------\r\n");
 				
