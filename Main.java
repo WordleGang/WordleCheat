@@ -69,8 +69,8 @@ public class Main {
 				if (foundResponse.equals("y"))
 				{
 					wordFound = true;
-					System.out.println(" ");
 				}
+				System.out.println(" ");
 			}
 	}
 }
