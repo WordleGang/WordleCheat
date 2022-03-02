@@ -91,9 +91,15 @@ public class Dictionary{
 						String[] yellowTest = totYellowLetters.get(i);
 						for (int k = 0; k < yellowTest.length; k++)
 						{
-							if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k]))
+							if (!yellowTest[k].equals("_"))
 							{
-								goodWord = false;
+								if (line.contains(yellowTest[k]) & !yellowTest[k].equals(lineLetters[k]))
+								{
+									
+								} else
+								{
+									goodWord = false;
+								}
 							}
 						}
 					}
