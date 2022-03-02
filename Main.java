@@ -20,7 +20,8 @@ public class Main {
 				Scanner letterCheck = new Scanner(System.in);
 				//Scanner to see what letters ARE NOT included in the word.
 				System.out.println("Accepting letters that aren't in the word of the day... (ex: aeiou)");
-				String nullLetters = letterCheck.nextLine().toLowerCase();
+				String nullLetters = "";
+				nullLetters = letterCheck.nextLine().toLowerCase();
 				if (!nullLetters.equals(""))
 				{
 					System.out.println(" ");
@@ -30,7 +31,8 @@ public class Main {
 				
 				//Scanner to see if there are any yellow letters and what positions they are in.
 				System.out.println("Accepting yellow letters in the format that README.txt specifies... (if the word you entered was 'raise' and the yellows were r, s, and e, you would type it as r__se.)");
-				String yellowLetters = letterCheck.nextLine().toLowerCase();
+				String yellowLetters = "";
+				yellowLetters = letterCheck.nextLine().toLowerCase();
 				if (!nullLetters.equals(""))
 				{
 					System.out.println(" ");
@@ -38,7 +40,8 @@ public class Main {
 				
 				//Scanner to see if there are any green letters and what positions they are in.
 				System.out.println("Accepting green letters in the format that README.txt specifies... (if the word you entered was 'table' and the greens were t, e, and l, you would type it as t__le.)");
-				String greenLetters = letterCheck.nextLine().toLowerCase();
+				String greenLetters = "";
+				greenLetters = letterCheck.nextLine().toLowerCase();
 				if (!nullLetters.equals(""))
 				{
 					System.out.println(" ");
