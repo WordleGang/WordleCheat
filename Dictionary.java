@@ -25,15 +25,16 @@ public class Dictionary{
 	public ArrayList<String> wordList;
 
 	//Boolean to let the program know whether or not a green letter has been found.
-	private Boolean greenFound = false;
+	public Boolean greenFound = false;
 
 	//Constructor for Dictionary class.
-	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl){
+	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl, Boolean gf){
 		this.answers = f;
 		this.nullLetters = nl;
 		this.yellowLetters = yl;
 		this.greenLetters = gl;
 		this.wordList = wl;
+		this.greenFound = gf;
   	}
 	
 	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
