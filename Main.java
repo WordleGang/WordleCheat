@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("WordleCheat\\wordleAnswers.txt");
+		File file = new File("C:\\Users\\hsstudent\\eclipse-workspace\\Wordle Test\\src\\wordleAnswers.txt");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
@@ -31,7 +31,7 @@ public class Main {
 				//Scanner to see if there are any yellow letters and what positions they are in.
 				System.out.println("Accepting yellow letters in the format that README.txt specifies... (if the word you entered was 'raise' and the yellows were r, s, and e, you would type it as r__se.)");
 				String yellowLetters = letterCheck.nextLine().toLowerCase();
-				if (!nullLetters.equals(""))
+				if (!yellowLetters.equals(""))
 				{
 					System.out.println(" ");
 				}
@@ -39,7 +39,7 @@ public class Main {
 				//Scanner to see if there are any green letters and what positions they are in.
 				System.out.println("Accepting green letters in the format that README.txt specifies... (if the word you entered was 'table' and the greens were t, e, and l, you would type it as t__le.)");
 				String greenLetters = letterCheck.nextLine().toLowerCase();
-				if (!nullLetters.equals(""))
+				if (!greenLetters.equals(""))
 				{
 					System.out.println(" ");
 				}
@@ -48,7 +48,7 @@ public class Main {
 				String[] runningGreen = dict.totGreenLetters;
 				ArrayList<String[]> runningYellow = dict.totYellowLetters;
 				Boolean greenFound = dict.greenFound;
-				
+
 				dict = new Dictionary(file, nullLetters, yellowLetters, greenLetters, wordList, greenFound);
 				dict.confirmLetters(runningNull, runningGreen, runningYellow);
 				wordList = dict.makeWordList();
