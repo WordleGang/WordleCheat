@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("\\WordleCheat\\wordleAnswers.txt");
+		File file = new File("C:\\Users\\hsstudent\\eclipse-workspace\\WordleCheat\\src\\wordleAnswers.txt");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
