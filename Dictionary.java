@@ -34,7 +34,10 @@ public class Dictionary{
 		this.yellowLetters = yl;
 		this.greenLetters = gl;
 		this.wordList = wl;
-		this.greenFound = gf;
+		if (gf!=null) 
+		{
+			this.greenFound = gf;
+		}
   	}
 	
 	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
@@ -139,7 +142,7 @@ public class Dictionary{
 		}
 		catch (Exception e) 
 		{
-			System.out.print("Exception in Dictionary class: " + e);
+			e.printStackTrace();
 		}
 			return wordList;
 		}
