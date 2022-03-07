@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("C:\\Users\\hsstudent\\eclipse-workspace\\Wordle Test\\src\\wordleAnswers.txt");
+		File file = new File("\\WordleCheat\\wordleAnswers.txt");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
@@ -25,7 +25,7 @@ public class Main {
 				guessList.add(guessCheck.nextLine().toLowerCase());
 				
 				//Scanner to see what letters ARE NOT included in the word.
-				System.out.println("Accepting letters that aren't in the word of the day... (ex: aeiou, do NOT put duplicate letters in, even if they appear grey)");
+				System.out.println("\r\nAccepting letters that aren't in the word of the day... (ex: aeiou, do NOT put duplicate letters in, even if they appear grey)");
 				String nullLetters = guessCheck.nextLine().toLowerCase();
 				if (!nullLetters.equals(""))
 				{
