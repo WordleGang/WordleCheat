@@ -97,6 +97,30 @@ public class Probability {
     // ArrayList<String> stringList = new
     // ArrayList<String>(Arrays.asList(stringArray));
 
+    int count = 0;
+
+    // switch count:
+    // case 1:
+    // System.out.println();
+    // return ;
+    // break;
+
+    // case 2:
+    // System.out.println();
+    // break;
+
+    // case 3:
+    // System.out.println();
+    // break;
+
+    // case 4:
+    // System.out.print();
+    // break;
+
+    // case 5:
+    // System.out.println();
+    // break;
+
     int letterIndex = 0;
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < letters.length; j++) {
