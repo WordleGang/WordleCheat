@@ -7,17 +7,17 @@ public class Dictionary{
 	private File answers;
 
 	//ArrayList of strings to hold all letters that have been found to not be a part of the word.
-	private ArrayList<String> totNullLetters = new ArrayList<String>();
+	public ArrayList<String> totNullLetters = new ArrayList<String>();
 	
 	public String nullLetters;
 
 	//Array to hold all green letters that have been found in order.
-	private String[] totGreenLetters = new String[]{"", "", "", "", ""};
+	public String[] totGreenLetters = new String[]{"", "", "", "", ""};
 	
 	public String greenLetters;
 
 	//ArrayList of arrays of strings to hold all instances of letters that are in the word but in the wrong place.
-	private ArrayList<String[]> totYellowLetters = new ArrayList<String[]>();
+	public ArrayList<String[]> totYellowLetters = new ArrayList<String[]>();
 	
 	public String yellowLetters;
 
@@ -25,29 +25,36 @@ public class Dictionary{
 	public ArrayList<String> wordList;
 
 	//Boolean to let the program know whether or not a green letter has been found.
-	private Boolean greenFound = false;
+	public Boolean greenFound = false;
 
 	//Constructor for Dictionary class.
-	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl){
-  	this.answers = f;
-	this.nullLetters = nl;
-	this.yellowLetters = yl;
-	this.greenLetters = gl;
-	this.wordList = wl;
+	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl, Boolean gf){
+		this.answers = f;
+		this.nullLetters = nl;
+		this.yellowLetters = yl;
+		this.greenLetters = gl;
+		this.wordList = wl;
+		if (gf!=null) 
+		{
+			this.greenFound = gf;
+		}
   	}
 	
 	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
-	public void confirmLetters()
+	public void confirmLetters(ArrayList<String> nl, String[] gl, ArrayList<String[]> yl)
 	{
+		totNullLetters = nl;
 		String[] currNullLetters = nullLetters.split("");
 		for (int i = 0; i < currNullLetters.length; i++)
 		{
 			totNullLetters.add(currNullLetters[i]);
 		}
-	
+		
+		totYellowLetters = yl;
 		String[] currYellowLetters = yellowLetters.split("");
 		totYellowLetters.add(currYellowLetters);
 
+		totGreenLetters = gl;
 		String[] currGreenLetters = greenLetters.split("");			
 		for (int i = 0; i < currGreenLetters.length; i++)
 		{
@@ -60,7 +67,7 @@ public class Dictionary{
 	}
 
 	//Method to be used after confirming all information with the user. Goes through the previously established answers File variable and removes words that do not fit the criteria.
-	public ArrayList<String> makeWordList()
+	public ArrayList<String> makeWordList(ArrayList<String> gl)
 	{
 		ArrayList<String> tempWordList = new ArrayList<String>();
 		try {
@@ -68,13 +75,22 @@ public class Dictionary{
 			String line = reader.readLine();
 			while(line!=null)
 			{
-				Boolean goodWord = true;				
+				Boolean goodWord = true;
+				
+				for (String guess : gl)
+				{
+					if (line.equals(guess))
+					{
+						goodWord = false;
+					}
+				}
+				
 				String[] lineLetters = line.split("");
 				
 				//Null letters.
 				for (int i = 0; i < totNullLetters.size(); i++) 
 				{
-					if (line.contains(totNullLetters.get(i))) 
+					if (!totNullLetters.get(i).equals("") & line.contains(totNullLetters.get(i))) 
 					{
 						goodWord = false;
 					}
@@ -88,9 +104,15 @@ public class Dictionary{
 						String[] yellowTest = totYellowLetters.get(i);
 						for (int k = 0; k < yellowTest.length; k++)
 						{
-							if (!yellowTest[k].equals("_") & yellowTest[k].equals(lineLetters[k]))
+							if (!yellowTest[k].equals("_"))
 							{
-								goodWord = false;
+								if (line.contains(yellowTest[k]) & !yellowTest[k].equals(lineLetters[k]))
+								{
+									
+								} else
+								{
+									goodWord = false;
+								}
 							}
 						}
 					}
@@ -120,7 +142,7 @@ public class Dictionary{
 		}
 		catch (Exception e) 
 		{
-			System.out.print("Exception in Dictionary class: " + e);
+			e.printStackTrace();
 		}
 			return wordList;
 		}
