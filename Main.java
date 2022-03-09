@@ -18,7 +18,7 @@ public class Main {
 
         Probability prob = new Probability();
 
-        Map<String, Double> hashBrown = new HashMap<>();
+        Map<String, Double> hashBrown = new HashMap<String, Double>();
 
         ArrayList<String> probableWordList;
 	
@@ -65,7 +65,9 @@ public class Main {
 				dict.confirmLetters(runningNull, runningGreen, runningYellow);
 				wordList = dict.makeWordList(guessList);
 
+                
                 hashBrown = prob.makeList(wordList);
+                //System.out.println(hashBrown);
 
                 probableWordList = new ArrayList<String>(hashBrown.keySet());
 				
@@ -76,7 +78,7 @@ public class Main {
 					//System.out.println(wordList.get(i));
 				//}
 
-                //System.out.println(probableWordList.get(probableWordList.size()-1));
+                System.out.println(probableWordList.get(probableWordList.size()-1));
 
 				System.out.print("\r\n");
 				
