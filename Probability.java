@@ -35,7 +35,7 @@ public class Probability {
    * @param decimalpoint
    * @return
    */
-  public static double roundDecimal(double num, int decimalpoint) {
+  private static double roundDecimal(double num, int decimalpoint) {
     // Use the math power value to cut off decimal place
     num = num * Math.pow(10, decimalpoint);
     num = Math.floor(num);
@@ -50,8 +50,8 @@ public class Probability {
     String word;
     double wordProbability;
     for (int i = 0; i < wordList.size(); i++) {
-      word = wordList.get(i);
-      wordProbability = getProbability(wordList.get(i));
+      word = wordList.get(i).toUpperCase();
+      wordProbability = getProbability(wordList.get(i).toUpperCase());
       totalArr.put(word, wordProbability);
     }
 
@@ -97,30 +97,6 @@ public class Probability {
     // ArrayList<String> stringList = new
     // ArrayList<String>(Arrays.asList(stringArray));
 
-    int count = 0;
-
-    // switch count:
-    // case 1:
-    // System.out.println();
-    // return ;
-    // break;
-
-    // case 2:
-    // System.out.println();
-    // break;
-
-    // case 3:
-    // System.out.println();
-    // break;
-
-    // case 4:
-    // System.out.print();
-    // break;
-
-    // case 5:
-    // System.out.println();
-    // break;
-
     int letterIndex = 0;
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < letters.length; j++) {
@@ -143,7 +119,7 @@ public class Probability {
     // }
 
     roundedAddedProbability = roundDecimal(addedProbability, 4);
-    System.out.println(roundedAddedProbability);
+    //System.out.println(roundedAddedProbability);
     return roundedAddedProbability;
   }
 
