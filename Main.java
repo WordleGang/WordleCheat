@@ -31,7 +31,7 @@ public class Main {
 				guessList.add(guessCheck.nextLine().toLowerCase());
 				
 				//Scanner to see what letters ARE NOT included in the word.
-				System.out.println("\r\nAccepting letters that aren't in the word of the day... (ex: aeiou, do NOT put duplicate letters in, even if they appear grey)");
+				System.out.println("\r\nAccepting grey letters... (ex: aeiou)");
 				String nullLetters = guessCheck.nextLine().toLowerCase();
 				if (!nullLetters.equals(""))
 				{
