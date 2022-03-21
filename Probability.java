@@ -21,6 +21,10 @@ public class Probability {
 
   public double roundedAddedProbability;
 
+  private int positionCount;
+
+  private PositionProbability PP = new PositionProbability();
+
   /**
    * Probability Class finds the total probabiliy of a letter occuring in a word
    */
@@ -45,7 +49,6 @@ public class Probability {
 
   public Map<String, Double> makeList(ArrayList<String> wordList) {
 
-    // ArrayList<Double> probabilityList = new ArrayList<Double>();
     HashMap<String, Double> totalArr = new HashMap<>();
     String word;
     double wordProbability;
@@ -56,9 +59,6 @@ public class Probability {
     }
 
     Map<String, Double> sortedMap = hashMapSorter(totalArr);
-    // Collections.sort(probabilityList);
-
-    // return probabilityList;
 
     return sortedMap;
   }
@@ -89,75 +89,77 @@ public class Probability {
    */
   public double getProbability(String input) {
 
-    // System.out.println("Called");
     addedProbability = 0;
 
     char[] charArray = input.toCharArray();
-    // System.out.println(charArray);
-    // ArrayList<String> stringList = new
-    // ArrayList<String>(Arrays.asList(stringArray));
 
-    int letterIndex = 0;
-    for (int i = 0; i < 5; i++) {
-      for (int j = 0; j < letters.length; j++) {
-        if (charArray[i] == letters[j]) {
-          addedProbability += probability[j];
-        }
+    positionCount = 0;
+
+    while (positionCount < 5) {
+      switch (positionCount) {
+        case 0:
+          System.out.println("position 0 reached");
+          for (int j = 0; j < letters.length; j++) {
+            if (charArray[0] == letters[j]) {
+              addedProbability += PP.positionZeroProbability[j];
+              positionCount += 1;
+            }
+          }
+          break;
+
+        case 1:
+          System.out.println("position 1 reached");
+          for (int j = 0; j < letters.length; j++) {
+            if (charArray[1] == letters[j]) {
+              addedProbability += PP.positionOneProbability[j];
+              positionCount += 1;
+            }
+          }
+          break;
+
+        case 2:
+          System.out.println("position 2 reached");
+          for (int j = 0; j < letters.length; j++) {
+            if (charArray[2] == letters[j]) {
+              addedProbability += PP.positionTwoProbability[j];
+              positionCount += 1;
+            }
+          }
+          break;
+
+        case 3:
+          System.out.println("position 3 reached");
+          for (int j = 0; j < letters.length; j++) {
+            if (charArray[3] == letters[j]) {
+              addedProbability += PP.positionThreeProbability[j];
+              positionCount += 1;
+            }
+          }
+          break;
+
+        case 4:
+          System.out.println("position 4 reached");
+          for (int j = 0; j < letters.length; j++) {
+            if (charArray[4] == letters[j]) {
+              addedProbability += PP.positionFourProbability[j];
+              positionCount += 1;
+            }
+          }
+          break;
       }
-
-      // System.out.println(addedProbability);
     }
 
-    // for (int i = 0; i < 4; i++) {
+    // for (int i = 0; i < 5; i++) {
+    // for (int j = 0; j < letters.length; j++) {
+    // if (charArray[i] == letters[j]) {
+    // addedProbability += probability[j];
+    // }
+    // }
 
-    // for (int e : letters) {
-    // if (e == charArray[i]) {
-    // addedProbability += probability[e];
-    // System.out.println(addedProbability);
-    // }
-    // }
     // }
 
     roundedAddedProbability = roundDecimal(addedProbability, 4);
-    //System.out.println(roundedAddedProbability);
     return roundedAddedProbability;
   }
-
-  // roundedAddedProbability = roundDecimal(addedProbability, 4);
-
-  // System.out.println(addedProbability);
-  // return addedProbability;
-
-  /**
-   * // Turns inputed value into useable array
-   * char[] stringArray = input.toCharArray();
-   * 
-   * // initiaates addedProbability
-   * 
-   * int letterIndex = 0;
-   * 
-   * // rounds addedProbability
-   * double roundedAddedProbability = 0;
-   * 
-   * // Runs five times but starts at zero to match with index of stringArray
-   * for (int i = 0; i < 5; i++) {
-   * 
-   * // while (stringArray[i] != letters[letterIndex]) {
-   * // if (stringArray[i] == letters[letterIndex]) {
-   * 
-   * // // holdingList.add(probability[letterIndex]);
-   * // }
-   * // letterIndex++;
-   * 
-   * // }
-   * 
-   * for (char c : stringArray) {
-   * if (stringArray[c] == letters[c]) {
-   * addedProbability += probability[c];
-   * }
-   * }
-   * // System.out.println(addedProbability);
-   * // addedProbability = addedProbability + probability[letterIndex];
-   */
 
 }
