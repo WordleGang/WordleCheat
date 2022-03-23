@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("C:\\Users\\hsstudent\\eclipse-workspace\\WordleCheat\\src\\wordleAnswers.txt");
+		File file = new File("/Users/rush/Desktop/WordleHelper/wordleAnswers.txt");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
@@ -15,6 +15,12 @@ public class Main {
 		Dictionary dict = new Dictionary(null, null, null, null, null, null);
 		
 		ArrayList<String> guessList = new ArrayList<String>();
+
+        Probability prob = new Probability();
+
+        Map<String, Double> hashBrown = new HashMap<String, Double>();
+
+        ArrayList<String> probableWordList;
 	
 		//Main while loop.
 		while(!wordFound) 
@@ -58,13 +64,22 @@ public class Main {
 				dict = new Dictionary(file, nullLetters, yellowLetters, greenLetters, wordList, greenFound);
 				dict.confirmLetters(runningNull, runningGreen, runningYellow);
 				wordList = dict.makeWordList(guessList);
+
+                
+                hashBrown = prob.makeList(wordList);
+                //System.out.println(hashBrown);
+
+                probableWordList = new ArrayList<String>(hashBrown.keySet());
 				
 				System.out.println("-----------\r\n");
 				
-				for(int i = 0; i < wordList.size() && i < 5; i++)
-				{
-					System.out.println(wordList.get(i));
-				}
+				//for(int i = 0; i < wordList.size() && i < 5; i++)
+				//{
+					//System.out.println(wordList.get(i));
+				//}
+
+                System.out.println(probableWordList.get(probableWordList.size()-1));
+
 				System.out.print("\r\n");
 				
 				System.out.println("Pick a word and type it into 'Wordle.'\r\n");
