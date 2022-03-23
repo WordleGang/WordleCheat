@@ -21,7 +21,7 @@ public class Dictionary{
 	
 	public String yellowLetters;
 	
-	public String allYellows;
+	public String allYellows = "";
 
 	//ArrayList of strings that holds all the words that the target word could be.
 	public ArrayList<String> wordList;
