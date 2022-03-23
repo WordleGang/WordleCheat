@@ -5,14 +5,14 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("/Users/rush/Desktop/WordleHelper/wordleAnswers.txt");
+		File file = new File("\\Users\\hsstudent\\eclipse-workspace\\WordleTest\\src\\wordleAnswers.txt");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
 		
 		Boolean wordFound = false;
 		
-		Dictionary dict = new Dictionary(null, null, null, null, null, null);
+		Dictionary dict = new Dictionary(null, "", "", "", null, null);
 		
 		ArrayList<String> guessList = new ArrayList<String>();
 
