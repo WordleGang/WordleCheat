@@ -161,7 +161,7 @@ public class Probability {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
         if (charArray[i] == charArray[j]) {
-          addedProbability -= 0.1;
+          addedProbability -= 0.05;
         }
 
       }
