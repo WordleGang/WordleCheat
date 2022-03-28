@@ -37,8 +37,6 @@ public class Main {
 				{
 					System.out.println(" ");
 				}
-			
-				System.out.println("The letter(s) " + nullLetters + " have been removed from the word list.\r\n");
 				
 				//Scanner to see if there are any yellow letters and what positions they are in.
 				System.out.println("Accepting yellow letters in the format that README.txt specifies... (if the word you entered was 'raise' and the yellows were r, s, and e, you would type it as r__se.)");
@@ -60,9 +58,11 @@ public class Main {
 				String[] runningGreen = dict.totGreenLetters;
 				ArrayList<String[]> runningYellow = dict.totYellowLetters;
 				Boolean greenFound = dict.greenFound;
+				String[] d1 = dict.d1;
+				String[] d2 = dict.d2;
 
 				dict = new Dictionary(file, nullLetters, yellowLetters, greenLetters, wordList, greenFound);
-				dict.confirmLetters(runningNull, runningGreen, runningYellow);
+				dict.confirmLetters(runningNull, runningGreen, runningYellow, d1, d2);
 				wordList = dict.makeWordList(guessList);
 
                 
@@ -84,15 +84,14 @@ public class Main {
 				
 				System.out.println("Pick a word and type it into 'Wordle.'\r\n");
 				
-				//Checks to see if user has found word.
+				/*Checks to see if user has found word.
 				Scanner foundCheck = new Scanner(System.in);
 				System.out.println("Was the word you typed in correct? (y/n)");
 				String foundResponse = foundCheck.nextLine().toLowerCase();
 				if (foundResponse.equals("y"))
 				{
 					wordFound = true;
-				}
-				System.out.println(" ");
+				}*/
 			}
 	}
 }

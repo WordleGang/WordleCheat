@@ -28,9 +28,14 @@ public class Dictionary{
 
 	//Boolean to let the program know whether or not a green letter has been found.
 	public Boolean greenFound = false;
+	
+	//Double letter counters;
+	public String[] d1 = new String[]{"f", ""};
+	public String[] d2 = new String[]{"f", ""};
 
 	//Constructor for Dictionary class.
-	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl, Boolean gf){
+	public Dictionary(File f, String nl, String yl, String gl, ArrayList<String> wl, Boolean gf)
+	{
 		this.answers = f;
 		this.nullLetters = nl;
 		this.yellowLetters = yl;
@@ -43,7 +48,7 @@ public class Dictionary{
   	}
 	
 	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
-	public void confirmLetters(ArrayList<String> nl, String[] gl, ArrayList<String[]> yl)
+	public void confirmLetters(ArrayList<String> nl, String[] gl, ArrayList<String[]> yl, String[] d, String[] D)
 	{	
 		totYellowLetters = yl;
 		allYellows = allYellows + yellowLetters;
@@ -58,6 +63,29 @@ public class Dictionary{
 			{
 				greenFound = true;
 				totGreenLetters[i] = currGreenLetters[i];
+			}
+		}
+		
+		d1 = d;
+		d2 = D;
+		
+		for (String yLetter : currYellowLetters)
+		{
+			for (String gLetter : currGreenLetters)
+			{
+				if (yLetter.equals(gLetter) & !yLetter.equals("_"))
+				{
+					if (d1[0].equals("f"))
+					{
+						d1[0] = "t";
+						d1[1] = yLetter;
+					}
+					else
+					{
+						d2[0] = "t";
+						d2[1] = yLetter;
+					}
+				}
 			}
 		}
 		
@@ -110,6 +138,38 @@ public class Dictionary{
 				}
 				
 				String[] lineLetters = line.split("");
+				
+				if (d1[0].equals("t")) 
+				{
+					int counter = 0;
+					for (String letter : lineLetters)
+					{
+						if (letter.equals(d1[1]))
+						{
+							counter++;
+						}
+					}
+					if (counter < 2)
+					{
+						goodWord = false;
+					}
+				}
+				
+				if (d2[0].equals("t")) 
+				{
+					int counter = 0;
+					for (String letter : lineLetters)
+					{
+						if (letter.equals(d2[1]))
+						{
+							counter++;
+						}
+					}
+					if (counter < 2)
+					{
+						goodWord = false;
+					}
+				}
 				
 				//Null letters.
 				for (int i = 0; i < totNullLetters.size(); i++) 
