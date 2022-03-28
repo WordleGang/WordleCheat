@@ -20,6 +20,8 @@ public class Dictionary{
 	public ArrayList<String[]> totYellowLetters = new ArrayList<String[]>();
 	
 	public String yellowLetters;
+	
+	public String allYellows;
 
 	//ArrayList of strings that holds all the words that the target word could be.
 	public ArrayList<String> wordList;
@@ -42,15 +44,9 @@ public class Dictionary{
 	
 	//Method to be used by the Main class after receiving input from the user regarding the different types of letters.
 	public void confirmLetters(ArrayList<String> nl, String[] gl, ArrayList<String[]> yl)
-	{
-		totNullLetters = nl;
-		String[] currNullLetters = nullLetters.split("");
-		for (int i = 0; i < currNullLetters.length; i++)
-		{
-			totNullLetters.add(currNullLetters[i]);
-		}
-		
+	{	
 		totYellowLetters = yl;
+		allYellows = allYellows + yellowLetters;
 		String[] currYellowLetters = yellowLetters.split("");
 		totYellowLetters.add(currYellowLetters);
 
@@ -62,6 +58,34 @@ public class Dictionary{
 			{
 				greenFound = true;
 				totGreenLetters[i] = currGreenLetters[i];
+			}
+		}
+		
+		totNullLetters = nl;
+		String[] currNullLetters = nullLetters.split("");
+		for (int i = 0; i < currNullLetters.length; i++)
+		{	
+			Boolean goodNull = true;
+			String nullLetter = currNullLetters[i];
+			if (allYellows.contains(nullLetter))
+			{
+				goodNull = false;
+			}
+			if (goodNull) {
+				for (int k = 0; k < totGreenLetters.length; k++)
+				{
+					if (nullLetter.equals(totGreenLetters[k]))
+					{
+						String[] newYellow = new String[]{nullLetter, nullLetter, nullLetter, nullLetter, nullLetter};
+						newYellow[k] = "_";
+						totYellowLetters.add(newYellow);
+						goodNull = false;
+					}
+				}
+			}
+			if (goodNull) 
+			{
+			totNullLetters.add(currNullLetters[i]);
 			}
 		}
 	}
@@ -90,7 +114,7 @@ public class Dictionary{
 				//Null letters.
 				for (int i = 0; i < totNullLetters.size(); i++) 
 				{
-					if (line.contains(totNullLetters.get(i))) 
+					if (!totNullLetters.get(i).equals("") & line.contains(totNullLetters.get(i))) 
 					{
 						goodWord = false;
 					}
