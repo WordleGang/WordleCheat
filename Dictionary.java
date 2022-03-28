@@ -73,7 +73,7 @@ public class Dictionary{
 		{
 			for (String gLetter : currGreenLetters)
 			{
-				if (yLetter.equals(gLetter) & !yLetter.equals("_"))
+				if (yLetter.equals(gLetter) & !yLetter.equals("_") & !yLetter.equals(""))
 				{
 					if (d1[0].equals("f"))
 					{
