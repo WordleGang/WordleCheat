@@ -98,7 +98,7 @@ public class Probability {
     while (positionCount < 5) {
       switch (positionCount) {
         case 0:
-          System.out.println("position 0 reached");
+          //System.out.println("position 0 reached");
           for (int j = 0; j < letters.length; j++) {
             if (charArray[0] == letters[j]) {
               addedProbability += PP.positionZeroProbability[j];
@@ -108,7 +108,7 @@ public class Probability {
           break;
 
         case 1:
-          System.out.println("position 1 reached");
+          //System.out.println("position 1 reached");
           for (int j = 0; j < letters.length; j++) {
             if (charArray[1] == letters[j]) {
               addedProbability += PP.positionOneProbability[j];
@@ -118,7 +118,7 @@ public class Probability {
           break;
 
         case 2:
-          System.out.println("position 2 reached");
+          //System.out.println("position 2 reached");
           for (int j = 0; j < letters.length; j++) {
             if (charArray[2] == letters[j]) {
               addedProbability += PP.positionTwoProbability[j];
@@ -128,7 +128,7 @@ public class Probability {
           break;
 
         case 3:
-          System.out.println("position 3 reached");
+          //System.out.println("position 3 reached");
           for (int j = 0; j < letters.length; j++) {
             if (charArray[3] == letters[j]) {
               addedProbability += PP.positionThreeProbability[j];
@@ -138,7 +138,7 @@ public class Probability {
           break;
 
         case 4:
-          System.out.println("position 4 reached");
+          //System.out.println("position 4 reached");
           for (int j = 0; j < letters.length; j++) {
             if (charArray[4] == letters[j]) {
               addedProbability += PP.positionFourProbability[j];
@@ -161,7 +161,7 @@ public class Probability {
     for (int i = 0; i < 5; i++) {
       for (int j = 0; j < 5; j++) {
         if (charArray[i] == charArray[j]) {
-          addedProbability -= 0.05;
+          addedProbability -= 0.025;
         }
 
       }
