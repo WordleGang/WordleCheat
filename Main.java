@@ -5,7 +5,11 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("/Users/rush/Desktop/WordleHelper/wordleAnswers.txt");
+		File classFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		String path = classFile.getAbsolutePath().toString();
+		path = path.substring(0, path.length()-3) + "\\wordleAnswers.txt";
+		File file = new File(path);
+		System.out.println("Drawing from:\r\n" + path + "\r\n");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
