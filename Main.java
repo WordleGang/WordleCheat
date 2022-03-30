@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) throws Exception{
 		
 		//Creates file object to be used later in the reader.
-		File file = new File("T:\\jude\\WordleTest\\src\\wordleAnswers.txt");
+		File file = new File("/Users/rush/Desktop/WordleHelper/wordleAnswers.txt");
 		
 		//Creates a list of words to be transmitted back and forth between the Dictionary class.
 		ArrayList<String> wordList = new ArrayList<String>();
@@ -93,7 +93,16 @@ public class Main {
 
 				System.out.print("\r\n");
 				
-				System.out.println("Pick a word and type it into 'Wordle.'\r\n");
+				Scanner foundCheck = new Scanner(System.in);
+				System.out.println("Was the word you typed in correct? (y/n)");
+				String foundResponse = foundCheck.nextLine().toLowerCase();
+				if (foundResponse.equals("y"))
+				{
+					wordFound = true;
+					break;
+				}
+
+				System.out.println("\r\nPick a word and type it into 'Wordle.'\r\n");
 				
 				/*Checks to see if user has found word.
 				Scanner foundCheck = new Scanner(System.in);
