@@ -7,7 +7,7 @@ public class Main {
 		//Creates file object to be used later in the reader.
 		File classFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
 		String path = classFile.getAbsolutePath().toString();
-		path = path.substring(0, path.length()-3) + "\\wordleAnswers.txt";
+		path = path.substring(0, path.length()) + "\\wordleAnswers.txt";
 		File file = new File(path);
 		System.out.println("Drawing from:\r\n" + path + "\r\n");
 		
